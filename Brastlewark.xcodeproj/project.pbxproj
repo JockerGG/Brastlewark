@@ -41,7 +41,6 @@
 		9B0AB0FA25ABE00E0095323B /* ValidateCacheDateWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0AB0F925ABE00E0095323B /* ValidateCacheDateWorker.swift */; };
 		9B0AB11C25ABE2C10095323B /* population.json in Resources */ = {isa = PBXBuildFile; fileRef = 9B0AB11B25ABE2C10095323B /* population.json */; };
 		9B0AB12225ABE30E0095323B /* TestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0AB12125ABE30E0095323B /* TestUtil.swift */; };
-		9B0AB13025ABE4570095323B /* GetPopulationInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0AB12F25ABE4570095323B /* GetPopulationInteractorTests.swift */; };
 		9B0AB15525ABEE680095323B /* PopulationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0AB15325ABEE680095323B /* PopulationListViewController.swift */; };
 		9B0AB15625ABEE680095323B /* PopulationListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B0AB15425ABEE680095323B /* PopulationListViewController.xib */; };
 		9B0AB16925ABEF5B0095323B /* GnomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0AB16725ABEF5B0095323B /* GnomeCell.swift */; };
@@ -107,7 +106,6 @@
 		9B0AB0F925ABE00E0095323B /* ValidateCacheDateWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateCacheDateWorker.swift; sourceTree = "<group>"; };
 		9B0AB11B25ABE2C10095323B /* population.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = population.json; sourceTree = "<group>"; };
 		9B0AB12125ABE30E0095323B /* TestUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtil.swift; sourceTree = "<group>"; };
-		9B0AB12F25ABE4570095323B /* GetPopulationInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPopulationInteractorTests.swift; sourceTree = "<group>"; };
 		9B0AB15325ABEE680095323B /* PopulationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulationListViewController.swift; sourceTree = "<group>"; };
 		9B0AB15425ABEE680095323B /* PopulationListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopulationListViewController.xib; sourceTree = "<group>"; };
 		9B0AB16725ABEF5B0095323B /* GnomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GnomeCell.swift; sourceTree = "<group>"; };
@@ -232,7 +230,6 @@
 		9B0AB03425ABC6860095323B /* BrastlewarkTests */ = {
 			isa = PBXGroup;
 			children = (
-				9B0AB12C25ABE4220095323B /* Core */,
 				9B0AB12025ABE3030095323B /* Utils */,
 				9B0AB10F25ABE27F0095323B /* Data */,
 				9B0AB03525ABC6860095323B /* BrastlewarkTests.swift */,
@@ -403,30 +400,6 @@
 				9B0AB12125ABE30E0095323B /* TestUtil.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		9B0AB12C25ABE4220095323B /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				9B0AB12E25ABE4310095323B /* Workers */,
-				9B0AB12D25ABE42B0095323B /* Interactors */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
-		9B0AB12D25ABE42B0095323B /* Interactors */ = {
-			isa = PBXGroup;
-			children = (
-				9B0AB12F25ABE4570095323B /* GetPopulationInteractorTests.swift */,
-			);
-			path = Interactors;
-			sourceTree = "<group>";
-		};
-		9B0AB12E25ABE4310095323B /* Workers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Workers;
 			sourceTree = "<group>";
 		};
 		9B0AB15225ABEE170095323B /* PopulationList */ = {
@@ -711,7 +684,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B0AB13025ABE4570095323B /* GetPopulationInteractorTests.swift in Sources */,
 				9B0AB03625ABC6860095323B /* BrastlewarkTests.swift in Sources */,
 				9B0AB12225ABE30E0095323B /* TestUtil.swift in Sources */,
 			);
