@@ -52,7 +52,11 @@ extension PopulationListViewController: UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let gnome: Gnome = presenter.getGnomeData(at: indexPath.item) else { return }
         
+        let nextController: GnomeDetailViewController = GnomeDetailViewController.instantiate(details: gnome)
+        
+        self.present(nextController, animated: true, completion: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

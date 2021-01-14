@@ -23,17 +23,12 @@ class GnomeCell: UICollectionViewCell {
         age.text = ""
         weight.text = ""
         height.text = ""
-        profileImage.image = nil
-        profileImage.layer.borderWidth = 0.5
-        profileImage.layer.mask?.masksToBounds = false
-        profileImage.layer.cornerRadius = profileImage.frame.width / 2
-        profileImage.clipsToBounds = true
+        profileImage.image = UIImage(named: "image-placeholder")
+        profileImage.setBorder(width: 0.5, color: .black)
+        profileImage.toCircle()
         
-        containerView.layer.borderWidth = 0.5
-        containerView.layer.borderColor = UIColor.black.withAlphaComponent(0.5).cgColor
-        containerView.layer.cornerRadius = 3
-        containerView.clipsToBounds = true
-        containerView.layer.mask?.masksToBounds = false
+        containerView.setBorder(width: 0.5, color: UIColor.black.withAlphaComponent(0.5))
+        containerView.roundCorners(radius: 3)
         
     }
     

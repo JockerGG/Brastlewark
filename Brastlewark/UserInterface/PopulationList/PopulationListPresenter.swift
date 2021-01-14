@@ -13,6 +13,7 @@ class PopulationListPresenter {
     
     init(data: Population?) {
         self.data = data
+        self.data?.population.sort { ($0.name ?? "").lowercased() < ($1.name ?? "").lowercased() }
     }
     
     func getItemsCount() -> Int {
