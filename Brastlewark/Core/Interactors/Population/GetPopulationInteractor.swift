@@ -6,26 +6,18 @@
 //
 
 import Foundation
-import RxSwift
 
 class GetPopulationInteractor {
     
-    func execute() -> Observable<Population> {
-        if let data: CacheData<Population> = GetUserDefaultsValueInteractor().execute(name: UserDefaultsConstants.populationCache),
+    func execute(_ completion: @escaping (BrastlewarkServer<Population>.BrastlewarkServerResponse) -> ()) {
+        if let data: CacheData<Population> = GetUserDefaultsValueInteractor<CacheData<Population>>().execute(name: UserDefaultsConstants.populationCache),
            let object: Population = data.object,
            ValidateCacheDateWorker().execute(cacheDate: data.date) {
-            return .just(object)
+            completion(.success(data: object))
+            return
         }
         
-        return PopulationAPI().getPopulation().map { data in
-            var cacheObject: CacheData<Population> = CacheData()
-            cacheObject.object = data
-            
-            DeleteUserDefaultsValueInteractor().execute(name: UserDefaultsConstants.populationCache)
-            SetUserDefaultsValueInteractor().execute(name: UserDefaultsConstants.populationCache, value: cacheObject.toJSONString())
-            
-            return data
-        }
+        PopulationAPI().getPopulation(completion: completion)
     }
     
 }

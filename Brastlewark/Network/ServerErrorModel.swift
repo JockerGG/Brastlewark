@@ -6,17 +6,11 @@
 //
 
 import Foundation
-import ObjectMapper
 
-struct ServerErrorModel: Error, Mappable {
+struct ServerErrorModel: Error, Codable {
     var reason: String?
     var error: Bool?
     
-    init?(map: Map) {
-    }
-    
-    mutating func mapping(map: Map) {
-        reason <- map["reason"]
-        error <- map["error"]
+    init?() {
     }
 }

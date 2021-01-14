@@ -10,7 +10,8 @@ import Foundation
 class ValidateCacheDateWorker {
     
     func execute(cacheDate: Date) -> Bool {
-        return cacheDate.addingTimeInterval(5 * 60) <= Date()
+        let date: Date = cacheDate.addingTimeInterval(5 * 60)
+        return date >= Date()
     }
     
 }

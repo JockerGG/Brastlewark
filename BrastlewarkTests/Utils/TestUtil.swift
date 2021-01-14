@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import ObjectMapper
 
 class TestUtil {
     class func loadJson(from fileName: String) -> String {

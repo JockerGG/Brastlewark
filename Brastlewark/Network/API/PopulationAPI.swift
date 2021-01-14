@@ -6,18 +6,16 @@
 //
 
 import Foundation
-import RxSwift
-import ObjectMapper
 
 class PopulationAPI {
     
-    func getPopulation() -> Observable<Population> {
+    func getPopulation(completion: @escaping (BrastlewarkServer<Population>.BrastlewarkServerResponse) -> ()) {
         let endpoint: Endpoint = Endpoint(
             baseUrl: "https://raw.githubusercontent.com/rrafols/mobile_test/master/data.json",
             httpMethod: "GET"
         )
         
-        return BrastlewarkServer<Population>().loadRequest(endpoint.buildRequest())
+        return BrastlewarkServer<Population>().loadRequest(endpoint.buildRequest(), completion: completion)
     }
     
 }

@@ -9,11 +9,12 @@ import Foundation
 
 class SetUserDefaultsValueInteractor {
     
-    func execute(name: String, value: String?) {
-        guard let value = value else { return }
+    func execute<T>(name: String, value: T) where T: Encodable {
+        guard let data: Data = try? JSONEncoder().encode(value),
+              let jsonString: String = String(data: data, encoding: .utf8) else { return }
         let defaults: UserDefaults = UserDefaults()
         
-        defaults.setValue(value, forKey: name)
+        defaults.setValue(jsonString, forKey: name)
         defaults.synchronize()
     }
     

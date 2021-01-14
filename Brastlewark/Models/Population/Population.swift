@@ -6,14 +6,11 @@
 //
 
 import Foundation
-import ObjectMapper
 
-struct Population: Mappable {
+struct Population: Codable {
     var population: [Gnome] = []
     
-    init?(map: Map) { }
-    
-    mutating func mapping(map: Map) {
-        population <- map["Brastlewark"]
+    private enum CodingKeys: String, CodingKey {
+        case population = "Brastlewark"
     }
 }

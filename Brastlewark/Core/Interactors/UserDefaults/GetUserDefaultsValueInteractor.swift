@@ -6,15 +6,15 @@
 //
 
 import Foundation
-import ObjectMapper
 
-class GetUserDefaultsValueInteractor<T: Mappable> {
+class GetUserDefaultsValueInteractor<T: Codable> {
     
     func execute(name: String) -> T? {
         let defaults: UserDefaults = UserDefaults()
-        guard let jsonString: String = defaults.string(forKey: name) else { return nil }
+        guard let jsonString: String = defaults.string(forKey: name),
+              let data: Data = jsonString.data(using: .utf8) else { return nil }
         
-        return Mapper<T>().map(JSONString: jsonString)
+        return try? JSONDecoder().decode(T.self, from: data)
     }
     
 }

@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import ObjectMapper
 
-struct Gnome: Mappable {
+struct Gnome: Codable {
     var id: Int = 0
     var name: String?
     var thumbnail: String?
@@ -19,18 +18,15 @@ struct Gnome: Mappable {
     var professions: [String] = []
     var friends: [String] = []
     
-    init?(map: Map) { }
-    
-    mutating func mapping(map: Map) {
-        id <- map["id"]
-        name <- map["name"]
-        thumbnail <- map["thumbnail"]
-        age <- map["age"]
-        weight <- map["weight"]
-        height <- map["height"]
-        hairColor <- map["hair_color"]
-        professions <- map["professions"]
-        friends <- map["friends"]
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case thumbnail
+        case age
+        case weight
+        case height
+        case hairColor = "hair_color"
+        case professions
+        case friends
     }
-    
 }

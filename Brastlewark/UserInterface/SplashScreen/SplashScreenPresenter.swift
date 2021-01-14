@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import RxSwift
 
 protocol SplashScreenPresenterView {
     func didLoadData(data: Population)
@@ -14,22 +13,29 @@ protocol SplashScreenPresenterView {
 }
 
 class SplashScreenPresenter {
-    
     var view: SplashScreenPresenterView?
-    let disposeBag: DisposeBag = DisposeBag()
     
     init(view: SplashScreenPresenterView?) {
         self.view = view
     }
     
     func loadData() {
-        GetPopulationInteractor().execute()
-            .subscribe( onNext: { [weak self] data in
-                self?.view?.didLoadData(data: data)
-            }, onError: { [weak self] error in
-                self?.view?.didLoadDataError(error: error.localizedDescription)
-            })
-            .disposed(by: disposeBag)
+        GetPopulationInteractor().execute( { [weak self] (response) in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                switch response {
+                case .success(let data):
+                    var cacheObject: CacheData<Population> = CacheData()
+                    cacheObject.object = data
+                    
+                    SetUserDefaultsValueInteractor().execute(name: UserDefaultsConstants.populationCache, value: cacheObject)
+                    
+                    self.view?.didLoadData(data: data)
+                case .error(let error):
+                    self.view?.didLoadDataError(error: error.localizedDescription)
+                }
+            }
+        })
     }
     
 }
